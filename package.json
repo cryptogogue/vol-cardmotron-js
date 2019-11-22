@@ -192,8 +192,8 @@
                         "./src"
                     ],
                     "alias": {
-                        "fgc": "./src/packages/fgc-common-js-src",
-                        "cardmotron": "./src/packages/vol-cardmotron-js-src"
+                        "fgc": "./src/packages/fgc-common-js-src/export",
+                        "cardmotron": "./src/packages/vol-cardmotron-js-src/export"
                     }
                 }
             ],

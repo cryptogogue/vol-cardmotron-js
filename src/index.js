@@ -1,7 +1,7 @@
 // Copyright (c) 2019 Cryptogogue, Inc. All Rights Reserved.
 
-import * as cardmotron from 'cardmotron/export';
-import * as fgc from 'fgc/export';
+import * as cardmotron from 'cardmotron';
+import * as fgc from 'fgc';
 
 import './index.css';
 import 'semantic-ui-css/semantic.min.css';
