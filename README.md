@@ -1,16 +1,16 @@
 # Cardmotron
 
-Cardmontron is a free tool for laying out trading card games for print. You can use it to quickly produce high-quality cardsheets for a variety of media sizes.
+Cardmotron is a free tool for laying out trading card games for print. You can use it to quickly produce high-quality cardsheets for a variety of media sizes.
 
-Cardmotron is great for prototying your game or for preparing it for print-and-play distribution. In time, more advanced features will be added to support commercial printing, including the ability to manually define page layouts.
+Cardmotron is great for prototying your game or for preparing it for print-and-play distribution.
 
-Cardmotron is and will continue to be free to use. We developed it for our own projects are are offering it now as a gift to the hobby game development community.
+Cardmotron is and will continue to be free to use.
 
 #### How it Works
 
-Cardmotron works by scanning an XLSX spreadsheet. The XLSX that contains all layouts and assets for a game is also called a *schema*.
+Cardmotron works by scanning an XLSX workbook to produce a "schema."
 
-A schema contains "layouts" and "definitions." Each layout describes an SVG document that is built up from drawing commands. The drawing commands use data specified in definitions along *handlebars* templating engine to render SVG. Drawing commands include inlined SVG templates, as well as text boxes and dynamically generated SVG graphics such as barcodes.
+A schema contains "layouts" and "definitions." Each layout describes an SVG document that is built up from drawing commands. The drawing commands use data specified in definitions along with the [handlebars](https://handlebarsjs.com/) templating engine to render SVG. Drawing commands include inlined SVG templates, as well as text boxes and dynamically generated SVG graphics such as barcodes.
 
 Most schemas will specify a layout for each type of card in the game. The definitions will contain the text, graphics and other data fields for each individual card. In other words, if your game has a card type called 'hero', they you will specify a single layout for 'hero' type cards and a unique definition for each individual hero in your game. 
 
@@ -34,15 +34,15 @@ Cryptogogue, Inc. make no guarantees about Cardmotron's suitability for any purp
 
 #### Contributing
 
-If you want to contribue a bug fix or feature implementation, please follow our [code style guide](docs/js-code-style-guide.md) and submit pull requests via GitHub from a fork or the repository.
+If you want to contribue a bug fix or feature implementation, please follow our [code style guide](docs/js-code-style-guide.md) and submit pull requests via GitHub from a fork of the repository.
 
-If you have a bug to report, prepare a clear description of the bug along repro case in the form of an XLSX and submit it to us via GitHub issues. If it doesn't affect our own use of Cardmotron, we will probably ignore it. If it doesn't have a repro case and example XLSX, we will *definitely* ignore it.
+If you have a bug to report, prepare a clear description of the bug along repro case in the form of an XLSX and submit it to us via GitHub [issues](https://github.com/cryptogogue/vol-cardmotron-js/issues). If it doesn't affect our own use of Cardmotron, we will probably ignore it. If it doesn't have a repro case and example XLSX, we will *definitely* ignore it.
 
 ## User's Guide
 
-### XLSX Directives
+### Directives
 
-Cardmotron always scans the first sheet in your XLSX. Cardmotron is controlled by directives placed in column 'A'. Directives are followed (on the same row) by a list of parameter names. The parameter names serve as a self-documenting reminder and also allow users to reorganize the order of parameters as they see fit. Directives and parameter are *case sensitive*.
+Cardmotron always scans the first sheet in your XLSX. Cardmotron is controlled by directives placed in column 'A'. Directives are always followed (on the same row) by a list of parameter names. The parameter names serve as a self-documenting reminder and also allow users to reorganize parameters as they see fit. Directives and parameter names are *case sensitive*.
 
 In order of typical use, the supported directives are:
 
@@ -51,7 +51,7 @@ In order of typical use, the supported directives are:
 - *ICONS:* Declares a list of SVG icons for inlining in text.
 - *LAYOUTS:* Declares a list of layouts.
 - *MACROS:* Declares a list of strings for substitution into definition string fields.
-- *DEFINITIONS:* Defines the data 'content' of the schema. Definitions are the 'what' of 'what is rendered'.
+- *DEFINITIONS:* Defines the data 'content' of the schema.
 
 Directives are read in-order, as they appear. While in most cases order doesn't matter, there are exceptions. For this reason, it is good practice to avoid forward references in directives. For example, avoid referencing a font in a layout before the font is defined.
 
@@ -61,7 +61,7 @@ Sometimes it's useful to break up a large schema into multiple sheets within an 
 
 *Parameters*
 
-- *sheet (required):* The name of another sheet in the XLSX workbook to include.
+- *sheet (required):* The name of another sheet in the XLSX workbook.
 
 Includes are processed immediately and in-order. An include will be processed for each subsequent row containing a valid sheet name.
 
@@ -69,7 +69,7 @@ Includes are processed immediately and in-order. An include will be processed fo
 
 The Cardmotron text formatting engine uses [opentype.js](https://opentype.js.org/) to load and organize fonts directly. Our implementation doesn't work with webfonts, so you have to provide URLs for statically hosted font files format you want to use. TTF and OTF font files are supported.
 
-Note that fonts specified this way are only for use with Cardmotron's internal text formatting engine, which renders text directly to SVG paths. Counterintuitively, they cannot be referenced as part of SVG text and font directives. For those, you will need to use SVG fonts or webfonts.
+Note that fonts specified this way are only for use with Cardmotron's internal text formatting engine, which renders text to SVG paths. Counterintuitively, they cannot be referenced as part of SVG text and font directives. For those, you will need to use SVG fonts or webfonts.
 
 *Parameters*
 
@@ -83,7 +83,7 @@ A font will be declared for each subsequent row containing a valid font group na
 
 #### ICONS
 
-Icons are SVG fragments that may be inlined Cardmotron's text formatting engine. The text formatting engine can fit icons into the text line, or place them without fitting.
+Icons are SVG fragments that may be inlined by Cardmotron's text formatting engine. The text formatting engine can fit icons into the text line, or place them without fitting.
 
 *Parameters*
 
@@ -98,7 +98,7 @@ Width and height extend top-to-bottom from the upper left document corner. They 
 
 A layout is a series of drawing subcommands that, when executed, compose an SVG. Unline most other directives, the layout directive expects a multi-row hierarchy of subcommands.
 
-For ease of use, the parameters of the layout directive and each of its subcommands are composed into a single row. This means that not all cells of all rows in a layout will be used by each subcommand, or even by the layout directive itself.
+For ease of use, the parameters of the layout directive and each of its subcommands are collected into a single row. This means that not all cells of all rows in a layout will be used by each subcommand, or even by the layout directive itself.
 
 Here is the list of all parameters names and their typical use by whatever commands accept them. A more detailed discussion of each individual command follows.
 
@@ -243,13 +243,13 @@ There are also two optional "control" parameters, and a special field. The "cont
 *Special Parameters*
 - *layout (required):* The name of a layout (or a space and/or comma-delimited list of layout names) to render the definition. If multiple layouts are specific, they are rendered in order.
 
-#### A Note About Fonts and CORS
+#### A Note About Font Files and CORS
 
-Since Cardmotron uses Javascript to load the font files you specify, the server hosting those files must support (CORS)[https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS]. If it doesn'y, you can use a proxy server like the popular (CORS-anywhere)[https://cors-anywhere.herokuapp.com/].
+Since Cardmotron uses Javascript to load the font files you specify, the server hosting those files must support [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). If it doesn'y, you can use a proxy server like the popular [CORS-anywhere](https://cors-anywhere.herokuapp.com/).
 
 As a convenience, https://www.cardmotron.com/cors is configured as an nginx CORS proxy. Just like CORS-anywhere, you can prefix it to your URL to proxy files and inject the necessary cors headers. As a further conventience, if your font file fails to load due to an exception, Cardmotron will retry download using the CORS proxy. **This is very slow.** Avoid it be moving your font files to a server that properly supports CORS.
 
-You may be able to host your font files on (GitHub)[www.github.com]. You may also be able to extra direct URLs for fonts you want to use from WebFont wrappers, provided the font files are in TTF or OTF format.
+You may be able to host your font files on [GitHub](www.github.com). You may also be able to extra direct URLs for fonts you want to use from WebFont wrappers, provided the font files are in TTF or OTF format.
 
 #### A Note About Templating
 
@@ -296,7 +296,7 @@ Embed inlines are used to imped SVG icons direcntly into text. Embed inlines ope
 
 Each embed inline may contain one or more icon names, separated by spaces. Specified icons with the 'ICONS' directive.
 
-by default, icons are scaled to fit neatly on the line of text, using the metrics of the currently font. The bottom of the icon's frame will align with the text baseline, and the top of the icon's frame will align with the font's ascender. Note that most fonts specify ascenders that are slightly taller than their letterforms, to allow room for accents and superscripts.
+By default, icons are scaled to fit neatly on the line of text, using the metrics of the currently font. The bottom of the icon's frame will align with the text baseline, and the top of the icon's frame will align with the font's ascender. Note that most fonts specify ascenders that are slightly taller than their letterforms, to allow room for accents and superscripts.
 
 Icon fitting may also be disabled using style commands. This is useful for icons that shouldn't scale with text being fitted to a textbox. For example, an ornamental text divider specified in layout coordinates that shouldn't shrink even if the text content changes size.
 
@@ -339,7 +339,7 @@ Each style block is “pushed” onto a stack of text styles as it is encountere
 
 ### Tips for Working With Excel
 
-Excel's cell value field can be expanded to show multiple lines. This comes in handy for working with long SVGs, though in practice you'll be mostly cutting and pasting these from the output of your drawing tool.
+Excel's cell value editor can be expanded to show multiple lines. This comes in handy for working with long SVGs, though in practice you'll be mostly cutting and pasting these from the output of your drawing tool.
 
 Also note that excel has a ~50,000 character limit per cell, which will limit the compexity of your icons. Eventually we will support using full multi-layer layouts as icons, but until then you'll need to keep your icons fairly clean.
 
