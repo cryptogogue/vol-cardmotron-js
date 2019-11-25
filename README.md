@@ -339,7 +339,7 @@ Each style block is “pushed” onto a stack of text styles as it is encountere
 
 ### Tips for Working With Excel
 
-Excel's cell value editor can be expanded to show multiple lines. This comes in handy for working with long SVGs, though in practice you'll be mostly cutting and pasting these from the output of your drawing tool.
+Excel's cell value editor can be expanded to show multiple lines. This comes in handy for working with long SVGs, though in practice you'll be mostly cutting and pasting these from the output of your drawing tool. Use Alt-Enter to add a line break if inputing data directly into Excel.
 
 Also note that excel has a ~50,000 character limit per cell, which will limit the compexity of your icons. Eventually we will support using full multi-layer layouts as icons, but until then you'll need to keep your icons fairly clean.
 
