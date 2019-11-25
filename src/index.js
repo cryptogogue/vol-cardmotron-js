@@ -22,7 +22,6 @@ const App = () => {
     return (<BrowserRouter>
         <div>
             <Switch>
-                <Route exact path = "/debug/aes"        component = { fgc.debug.AESScreen }/>
                 <Route exact path = "/"                 component = { cardmotron.EditorScreen }/>
             </Switch>
         </div>
