@@ -38,6 +38,10 @@ If you want to contribue a bug fix or feature implementation, please follow our 
 
 If you have a bug to report, prepare a clear description of the bug along repro case in the form of an XLSX and submit it to us via GitHub [issues](https://github.com/cryptogogue/vol-cardmotron-js/issues). If it doesn't affect our own use of Cardmotron, we will probably ignore it. If it doesn't have a repro case and example XLSX, we will *definitely* ignore it.
 
+#### Support
+
+Check the [Cardmotron forum](https://community.volitionccg.com/category/6/cardmotron) for user support. 
+
 ## User's Guide
 
 ### Directives
