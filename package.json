@@ -1,5 +1,5 @@
 {
-    "name": "vol-cardmotron-js-app",
+    "name": "vol-cardmotron-js",
     "version": "0.0.2",
     "dependencies": {
         "@babel/core": "^7.7.2",
