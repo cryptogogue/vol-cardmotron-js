@@ -34,7 +34,7 @@ Cryptogogue, Inc. make no guarantees about Cardmotron's suitability for any purp
 
 #### Contributing
 
-If you want to contribue a bug fix or feature implementation, please follow our code style guide and submit pull requests via GitHub from a fork or the repository.
+If you want to contribue a bug fix or feature implementation, please follow our (code style guide)[/docs/js-code-style-guide.md] and submit pull requests via GitHub from a fork or the repository.
 
 If you have a bug to report, prepare a clear description of the bug along repro case in the form of an XLSX and submit it to us via GitHub issues. If it doesn't affect our own use of Cardmotron, we will probably ignore it. If it doesn't have a repro case and example XLSX, we will *definitely* ignore it.
 
@@ -112,7 +112,7 @@ Here is the list of all parameters names and their typical use by whatever comma
 - *y:* Y translation, in layout coordinates. Default is 0.
 - *width:* Width, in layout coordinates. Default is layout width.
 - *height:* Height, in layout coordinates. Default is layout height.
-- *dpi:* Used to convert layout coordinates to inches for print and screen display. Leave this 300 for now.
+- *dpi:* Used to convert layout coordinates to inches for print and screen display.
 - *font:* Name of the default font group to use for dynamic text styling.
 - *fontSize:* Default font size to use for dynamic text styling, in layout units.
 - *hAlign:* Horizontal text alignment. One of 'left', 'center' or 'right'. Default is 'left'.
@@ -221,17 +221,27 @@ A macro will be declared for each subsequent row containing a valid macro name.
 
 #### DEFINITIONS
 
-The definitions directive differs from other directives in that all but three of its parameters are user-defined. Also, unlike other directives, the row immediately following the directive row is reserved. In some applications, it may be used to specify the data type of user-defined parameters, but for simple layout applications it may be left blank, in which case the data type of each parameter will be 'string'.
+The definitions directive differs from other directives in that its parameters are user-defined. Also, unlike other directives, the row immediately following the directive row is reserved. In some applications, it may be used to specify the data type of user-defined parameters, but for simple layout applications it may be left blank, in which case the data type of each parameter will be 'string'.
 
-The user-defined parameters (and some built-in parameters) are used to populate the data 'fields' of the definition. The values of these fields are then available to the templaing engine as layouts are rendered.
+The user-defined parameters are used to populate the data 'fields' of the definition. The values of these fields are then available to the templaing engine as layouts are rendered.
 
-*Parameters*
+There are also two optional "control" parameters, and a special field. The "control" parameters are:
+
+*Control Parameters*
 
 - *\* (optional):* The number of copies of each asset to add to the inventory view.
 - *@ (optional):* The typename of the definition. May contain only lowercase letters, numerals and the special character '-'. Must be unique. If omitted, will be generated (naively).
+
+*Special Parameters*
 - *layout (required):* The name of a layout (or a space and/or comma-delimited list of layout names) to render the definition. If multiple layouts are specific, they are rendered in order.
 
-The special parameter '\*' is not included as a data field in the definition. Instead, it is used by Cardmotron to populate the inventory view. If it is zero or missing, the asset will not be rendered.
+#### A Note About Fonts and CORS
+
+Since Cardmotron uses Javascript to load the font files you specify, the server hosting those files must support (CORS)[https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS]. If it doesn'y, you can use a proxy server like the popular (CORS-anywhere)[https://cors-anywhere.herokuapp.com/].
+
+As a convenience, https://www.cardmotron.com/cors is configured as an nginx CORS proxy. Just like CORS-anywhere, you can prefix it to your URL to proxy files and inject the necessary cors headers. As a further conventience, if your font file fails to load due to an exception, Cardmotron will retry download using the CORS proxy. **This is very slow.** Avoid it be moving your font files to a server that properly supports CORS.
+
+You may be able to host your font files on (GitHub)[www.github.com]. You may also be able to extra direct URLs for fonts you want to use from WebFont wrappers, provided the font files are in TTF or OTF format.
 
 #### A Note About Templating
 
@@ -322,3 +332,8 @@ Each style block is “pushed” onto a stack of text styles as it is encountere
 ### Tips for Working With Excel
 
 ### Additional Reading
+
+- (Handlebars JS)[https://handlebarsjs.com/]
+- (Opentype JS)[https://opentype.js.org/]
+- (SVG)[https://www.w3.org/Graphics/SVG/]
+- (CORS)[https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS]
