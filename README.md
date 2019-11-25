@@ -18,7 +18,7 @@ Cardmotron features a powerful text formatting engine that can be used to render
 
 #### Try it Out
 
-Download and save the reference schema *here*. Now open Cardmotron and use the file picker to load the schema. You should see a generated card inventory that looks like this:
+Download and save the reference schema [here](https://raw.githubusercontent.com/cryptogogue/vol-cardmotron-samples/master/workbooks/sample-game.xlsx). Now open Cardmotron and use the file picker to load the schema. You should see a generated card inventory.
 
 You can sort and zoom the cards in web view mode. To prepare them for print, select your preferred media size from the drop-down and use the browser's print dialog to send your cards to a printer or save them as a .pdf.
 
@@ -34,7 +34,7 @@ Cryptogogue, Inc. make no guarantees about Cardmotron's suitability for any purp
 
 #### Contributing
 
-If you want to contribue a bug fix or feature implementation, please follow our (code style guide)[docs/js-code-style-guide.md] and submit pull requests via GitHub from a fork or the repository.
+If you want to contribue a bug fix or feature implementation, please follow our [code style guide](docs/js-code-style-guide.md) and submit pull requests via GitHub from a fork or the repository.
 
 If you have a bug to report, prepare a clear description of the bug along repro case in the form of an XLSX and submit it to us via GitHub issues. If it doesn't affect our own use of Cardmotron, we will probably ignore it. If it doesn't have a repro case and example XLSX, we will *definitely* ignore it.
 
@@ -343,9 +343,12 @@ Excel's cell value field can be expanded to show multiple lines. This comes in h
 
 Also note that excel has a ~50,000 character limit per cell, which will limit the compexity of your icons. Eventually we will support using full multi-layer layouts as icons, but until then you'll need to keep your icons fairly clean.
 
+### Where to Find Sample Data
+We've checked some sample data into [vol-cardmotron-samples](https://github.com/cryptogogue/vol-cardmotron-samples).
+
 ### Additional Reading
 
-- (Handlebars JS)[https://handlebarsjs.com/]
-- (Opentype JS)[https://opentype.js.org/]
-- (SVG)[https://www.w3.org/Graphics/SVG/]
-- (CORS)[https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS]
+- [Handlebars JS](https://handlebarsjs.com/)
+- [Opentype JS](https://opentype.js.org/)
+- [SVG](https://www.w3.org/Graphics/SVG/)
+- [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
