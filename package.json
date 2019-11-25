@@ -60,7 +60,6 @@
         "react-stripe-elements": "^2.0.3",
         "react-virtualized-auto-sizer": "^1.0.2",
         "react-window": "^1.8.5",
-        "react-window-infinite-loader": "^1.0.5",
         "resolve": "1.12.0",
         "resolve-url-loader": "3.1.0",
         "sass-loader": "7.2.0",
