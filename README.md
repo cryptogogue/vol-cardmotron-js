@@ -34,7 +34,7 @@ Cryptogogue, Inc. make no guarantees about Cardmotron's suitability for any purp
 
 #### Contributing
 
-If you want to contribue a bug fix or feature implementation, please follow our (code style guide)[/docs/js-code-style-guide.md] and submit pull requests via GitHub from a fork or the repository.
+If you want to contribue a bug fix or feature implementation, please follow our (code style guide)[docs/js-code-style-guide.md] and submit pull requests via GitHub from a fork or the repository.
 
 If you have a bug to report, prepare a clear description of the bug along repro case in the form of an XLSX and submit it to us via GitHub issues. If it doesn't affect our own use of Cardmotron, we will probably ignore it. If it doesn't have a repro case and example XLSX, we will *definitely* ignore it.
 
@@ -206,6 +206,14 @@ Instead of text paths, Cardmotron can instead embed your text into a [QR](https:
 - *width (optional):* Width, in layout coordinates. Default is layout width.
 - *height (optional):* Height, in layout coordinates. Default is 1/4 of width. 
 
+##### ref
+
+The 'ref' drawing references one of more other layouts.
+
+*Parameters*
+
+- *ref (required):* The name(s) of the layout(s) to reference. Accepts a single layout name, or a comma and/or space delimited list. 
+
 #### MACROS
 
 Macros are user-defined string substitutions specifically for use in asset fields of type 'string'. All asset fields of type 'string' are evaluated as templates using [handlebars](https://handlebarsjs.com/) with the table of user-defined macros as context. Macro substitution is performed prior to rendering layouts.
@@ -330,6 +338,10 @@ Note that horizontal alignment options only apply at or after a newline.
 Each style block is “pushed” onto a stack of text styles as it is encountered and composed with the previous styles. An empty style block causes the last style to be “popped” off the top of the stack, returning the text style to its state before the last "push".
 
 ### Tips for Working With Excel
+
+Excel's cell value field can be expanded to show multiple lines. This comes in handy for working with long SVGs, though in practice you'll be mostly cutting and pasting these from the output of your drawing tool.
+
+Also note that excel has a ~50,000 character limit per cell, which will limit the compexity of your icons. Eventually we will support using full multi-layer layouts as icons, but until then you'll need to keep your icons fairly clean.
 
 ### Additional Reading
 
