@@ -1,3 +1,8 @@
 Copyright (c) 2019 Cryptogogue, Inc. All Rights Reserved.
 
-This source code is part of the Volition blockchain project. Provided for informational purposes only. No rights are granted or implied.
+Cardmotron is free to use. Documents produced using Cardmotron are original works and remain the intellectual property of their authors. Using Cardmotron lawfully is the sole responsibility of the end user. End users indemnify and hold harmless Cryptogogue, Inc. against any damages arising from the use of Cardmotron.
+
+The Cardmotron source code is provided for informational purposes only. It remains the exclusive property of Cryptogogue, Inc. and is licensed to end users only for local hosting on client machines for individual use.
+
+Modifications to Cardmotron's source code are considered derivative works and remain the property or Cryptogogue, Inc., licensed to their authors under the terms of this license.
+

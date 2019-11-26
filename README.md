@@ -26,13 +26,11 @@ You can sort and zoom the cards in web view mode. To prepare them for print, sel
 
 ### License
 
-Cardmotron is free to use. Documents produced using Cardmotron are original works and remain the sole intellectual property of the end user. Using Cardmotron and the documents it produces lawfully is the sole responsibility of the end user.
+Cardmotron is free to use. Documents produced using Cardmotron are original works and remain the intellectual property of their authors. Using Cardmotron lawfully is the sole responsibility of the end user. End users indemnify and hold harmless Cryptogogue, Inc. against any damages arising from the use of Cardmotron.
 
-The Cardmotron source code is provided for informational purposes only. It remains the exclusive property of Cryptogogue, Inc. and is licensed to end users only for local hosting on client machines for individual use. No license to publicly host or distribute Cardmotron in whole or in part in any fashion or to produce any deriviative work based on Cardmotron's source code is granted or implied.
+The Cardmotron source code is provided for informational purposes only. It remains the exclusive property of Cryptogogue, Inc. and is licensed to end users only for local hosting on client machines for individual use.
 
-Modifications to Cardmotron's source code are considered derivative works. All such works are the property or Cryptogogue, Inc. and will continue to be licensed to their authors (and the public at large) in perpetuity under the original terms of this license.
-
-Cryptogogue, Inc. make no guarantees about Cardmotron's suitability for any purpose. Do not taunt Cardmotron.
+Modifications to Cardmotron's source code are considered derivative works and remain the property or Cryptogogue, Inc., licensed to their authors under the terms of this license.
 
 ### Contributing
 
@@ -349,7 +347,7 @@ Each style block is “pushed” onto a stack of text styles as it is encountere
 
 Excel's cell value editor can be expanded to show multiple lines. This comes in handy for working with long SVGs, though in practice you'll be mostly cutting and pasting these from the output of your drawing tool. Use Alt-Enter to add a line break if inputing data directly into Excel.
 
-Also note that excel has a ~50,000 character limit per cell, which will limit the compexity of your icons. Eventually we will support using full multi-layer layouts as icons, but until then you'll need to keep your icons fairly clean.
+Also note that excel has a 50,000 character limit per cell, which will limit the compexity of your icons. Eventually we will support using full multi-layer layouts as icons, but until then you'll need to keep your icons fairly clean.
 
 ### Where to Find Sample Data
 We've checked some sample data into [vol-cardmotron-samples](https://github.com/cryptogogue/vol-cardmotron-samples).
