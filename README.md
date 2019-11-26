@@ -2,27 +2,29 @@
 
 Cardmotron is a free tool for laying out trading card games for print. You can use it to quickly produce high-quality cardsheets for a variety of media sizes.
 
-Cardmotron is great for prototying your game or for preparing it for print-and-play distribution.
+Cardmotron is great for prototyping your game or for preparing it for print-and-play distribution.
 
 Cardmotron is and will continue to be free to use.
 
-#### How it Works
+### How it Works
 
-Cardmotron works by scanning an XLSX workbook to produce a "schema."
+Cardmotron works by scanning an XLSX workbook to produce a "schema".
 
 A schema contains "layouts" and "definitions." Each layout describes an SVG document that is built up from drawing commands. The drawing commands use data specified in definitions along with the [handlebars](https://handlebarsjs.com/) templating engine to render SVG. Drawing commands include inlined SVG templates, as well as text boxes and dynamically generated SVG graphics such as barcodes.
 
-Most schemas will specify a layout for each type of card in the game. The definitions will contain the text, graphics and other data fields for each individual card. In other words, if your game has a card type called 'hero', they you will specify a single layout for 'hero' type cards and a unique definition for each individual hero in your game. 
+Most schemas will specify a layout for each type of card in the game. The definitions will contain the text, graphics and other data fields for each individual card. In other words, if your game has a card type called 'hero', then you will specify a single layout for 'hero' type cards and a unique definition for each individual hero in your game. 
 
 Cardmotron features a powerful text formatting engine that can be used to render styled text with multiple fonts and inlined icons. Cardmotron can also dynamically align and resize text to fit inside a text box. This is key functionality, as manually formatting text using professional design tools can be time consuming and, surprisingly, dynamically fitting text to a constrained space is not widely supported by either HTML/CSS or SVG.
 
-#### Try it Out
+### Try it Out
 
-Download and save the reference schema [here](https://raw.githubusercontent.com/cryptogogue/vol-cardmotron-samples/master/workbooks/sample-game.xlsx). Now open Cardmotron and use the file picker to load the schema. You should see a generated card inventory.
+1. Download and save the reference schema [here](https://raw.githubusercontent.com/cryptogogue/vol-cardmotron-samples/master/workbooks/sample-game.xlsx).
+2. Open Cardmotron and use the file picker to load the schema.
+3. You should see a generated card inventory.
 
 You can sort and zoom the cards in web view mode. To prepare them for print, select your preferred media size from the drop-down and use the browser's print dialog to send your cards to a printer or save them as a .pdf.
 
-#### License
+### License
 
 Cardmotron is free to use. Documents produced using Cardmotron are original works and remain the sole intellectual property of the end user. Using Cardmotron and the documents it produces lawfully is the sole responsibility of the end user.
 
@@ -32,30 +34,32 @@ Modifications to Cardmotron's source code are considered derivative works. All s
 
 Cryptogogue, Inc. make no guarantees about Cardmotron's suitability for any purpose. Do not taunt Cardmotron.
 
-#### Contributing
+### Contributing
 
 If you want to contribue a bug fix or feature implementation, please follow our [code style guide](docs/js-code-style-guide.md) and submit pull requests via GitHub from a fork of the repository.
 
-If you have a bug to report, prepare a clear description of the bug along repro case in the form of an XLSX and submit it to us via GitHub [issues](https://github.com/cryptogogue/vol-cardmotron-js/issues). If it doesn't affect our own use of Cardmotron, we will probably ignore it. If it doesn't have a repro case and example XLSX, we will *definitely* ignore it.
+If you have a bug to report, prepare a clear description of the bug along with a repro case in the form of an XLSX and submit it to us via GitHub [issues](https://github.com/cryptogogue/vol-cardmotron-js/issues). If it doesn't affect our own use of Cardmotron, we will probably ignore it. If it doesn't have a repro case and example XLSX, we will *definitely* ignore it.
 
-#### Support
+### Support
 
-Check the [Cardmotron forum](https://community.volitionccg.com/category/6/cardmotron) for user support. 
+Check the [Cardmotron forum](https://community.volitionccg.com/category/6/cardmotron) for user support.
+
+---
 
 ## User's Guide
 
 ### Directives
 
-Cardmotron always scans the first sheet in your XLSX. Cardmotron is controlled by directives placed in column 'A'. Directives are always followed (on the same row) by a list of parameter names. The parameter names serve as a self-documenting reminder and also allow users to reorganize parameters as they see fit. Directives and parameter names are *case sensitive*.
+Cardmotron always scans the first sheet in your XLSX. Cardmotron is controlled by directives placed in column 'A'. Directives are always followed (on the same row) by a list of parameter names. The parameter names serve as a self-documenting reminder and also allow users to reorganize parameters as they see fit. Directives and parameter names are **case sensitive**.
 
 In order of typical use, the supported directives are:
 
-- *INCLUDES:* Used to break a schema up into multiple sheets.
-- *FONTS:* Declares a list of font families for use in text boxes.
-- *ICONS:* Declares a list of SVG icons for inlining in text.
-- *LAYOUTS:* Declares a list of layouts.
-- *MACROS:* Declares a list of strings for substitution into definition string fields.
-- *DEFINITIONS:* Defines the data 'content' of the schema.
+- **INCLUDES:** Used to break a schema up into multiple sheets.
+- **FONTS:** Declares a list of font families for use in text boxes.
+- **ICONS:** Declares a list of SVG icons for inlining in text.
+- **LAYOUTS:** Declares a list of layouts.
+- **MACROS:** Declares a list of strings for substitution into definition string fields.
+- **DEFINITIONS:** Defines the data 'content' of the schema.
 
 Directives are read in-order, as they appear. While in most cases order doesn't matter, there are exceptions. For this reason, it is good practice to avoid forward references in directives. For example, avoid referencing a font in a layout before the font is defined.
 
@@ -100,11 +104,11 @@ Width and height extend top-to-bottom from the upper left document corner. They 
 
 #### LAYOUTS
 
-A layout is a series of drawing subcommands that, when executed, compose an SVG. Unline most other directives, the layout directive expects a multi-row hierarchy of subcommands.
+A layout is a series of drawing subcommands that, when executed, compose an SVG. Unlike most other directives, the layout directive expects a multi-row hierarchy of subcommands.
 
 For ease of use, the parameters of the layout directive and each of its subcommands are collected into a single row. This means that not all cells of all rows in a layout will be used by each subcommand, or even by the layout directive itself.
 
-Here is the list of all parameters names and their typical use by whatever commands accept them. A more detailed discussion of each individual command follows.
+Here is the list of all parameter names and their typical use by whatever commands accept them. A more detailed discussion of each individual command follows.
 
 *All Parameters*
 
@@ -212,7 +216,7 @@ Instead of text paths, Cardmotron can instead embed your text into a [QR](https:
 
 ##### ref
 
-The 'ref' drawing references one of more other layouts.
+The 'ref' drawing references one or more other layouts.
 
 *Parameters*
 
@@ -249,7 +253,7 @@ There are also two optional "control" parameters, and a special field. The "cont
 
 #### A Note About Font Files and CORS
 
-Since Cardmotron uses Javascript to load the font files you specify, the server hosting those files must support [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). If it doesn'y, you can use a proxy server like the popular [CORS-anywhere](https://cors-anywhere.herokuapp.com/).
+Since Cardmotron uses Javascript to load the font files you specify, the server hosting those files must support [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). If it doesn't, you can use a proxy server like the popular [CORS-anywhere](https://cors-anywhere.herokuapp.com/).
 
 As a convenience, https://www.cardmotron.com/cors is configured as an nginx CORS proxy. Just like CORS-anywhere, you can prefix it to your URL to proxy files and inject the necessary cors headers. As a further conventience, if your font file fails to load due to an exception, Cardmotron will retry download using the CORS proxy. **This is very slow.** Avoid it be moving your font files to a server that properly supports CORS.
 
@@ -257,7 +261,7 @@ You may be able to host your font files on [GitHub](www.github.com). You may als
 
 #### A Note About Templating
 
-Cardmotron usese the [handlebars](https://handlebarsjs.com/) templaing engine under the hood. Templates are evaluated in four sequential pipeline stages. First, the table of user-defined macros is used as the context for the string fields of the definitions (which are evaluated as templates). Following this, for each definition, a templating context is prepared using the definition's parameter names as keys and its fields as values. The layout is then rendered. Each drawing subcommand is given the definition context, which is used to evaluate its 'text' field (if any) prior to rendering it to SVG. The result is then added to the template context under the special key of '\$\$'. The resulting context is then used to evaluate the drawing subcommand's svg' field (if any). Finally, once all drawing commands have been rendered into SVG, the final result is assigned to the '\$\$' key and the used to evaluate the layout directive's own 'svg' field (if any).
+Cardmotron uses the [handlebars](https://handlebarsjs.com/) templating engine under the hood. Templates are evaluated in four sequential pipeline stages. First, the table of user-defined macros is used as the context for the string fields of the definitions (which are evaluated as templates). Following this, for each definition, a templating context is prepared using the definition's parameter names as keys and its fields as values. The layout is then rendered. Each drawing subcommand is given the definition context, which is used to evaluate its 'text' field (if any) prior to rendering it to SVG. The result is then added to the template context under the special key of '\$\$'. The resulting context is then used to evaluate the drawing subcommand's svg' field (if any). Finally, once all drawing commands have been rendered into SVG, the final result is assigned to the '\$\$' key and the used to evaluate the layout directive's own 'svg' field (if any).
 
 If no 'svg' field is provided at any stage of the pipeline, then the output of the previous stage is simply forwarded to the next stage.
 
@@ -290,17 +294,17 @@ However, there is one word of caution. Even though each layout gets rendered int
 
 ### Text Formatting
 
-Cardmotron uses [opentype.js](https://opentype.js.org/) to render text directly to SVG paths. This is an alternative to SVG text rendering. While it more limited than what can be done with SVG, text rendered with Cardmotron can be dynamically fit to text boxes and can be styled using a concise inline syntax. SVG does not support dynamic text fitting (or even text wrapping). To do the same with SVG, you would have to lay out every card using a print layout tool (such as [Adobe InDesign](https://www.adobe.com/products/indesign.html)) and output your text to SVG text spans.
+Cardmotron uses [opentype.js](https://opentype.js.org/) to render text directly to SVG paths. This is an alternative to SVG text rendering. While it is more limited than what can be done with SVG, text rendered with Cardmotron can be dynamically fit to text boxes and can be styled using a concise inline syntax. SVG does not support dynamic text fitting (or even text wrapping). To do the same with SVG, you would have to lay out every card using a print layout tool (such as [Adobe InDesign](https://www.adobe.com/products/indesign.html)) and output your text to SVG text spans.
 
 There are two types of text inlines: *embed* inlines and *style* inlines.
 
 #### Embed Inlines
 
-Embed inlines are used to imped SVG icons direcntly into text. Embed inlines open with '<@' and close with '>'. Embed inlines can be escaped by using a double ‘$’, i.e. '<\@\@' will not be parsed as an embed inline and will instead appear in the output text as '<@'.
+Embed inlines are used to imbed SVG icons directly into text. Embed inlines open with '<@' and close with '>'. Embed inlines can be escaped by using a double ‘@’, i.e. '<\@\@' will not be parsed as an embed inline and will instead appear in the output text as '<@'.
 
 Each embed inline may contain one or more icon names, separated by spaces. Specified icons with the 'ICONS' directive.
 
-By default, icons are scaled to fit neatly on the line of text, using the metrics of the currently font. The bottom of the icon's frame will align with the text baseline, and the top of the icon's frame will align with the font's ascender. Note that most fonts specify ascenders that are slightly taller than their letterforms, to allow room for accents and superscripts.
+By default, icons are scaled to fit neatly on the line of text, using the metrics of the current font. The bottom of the icon's frame will align with the text baseline, and the top of the icon's frame will align with the font's ascender. Note that most fonts specify ascenders that are slightly taller than their letterforms, to allow room for accents and superscripts.
 
 Icon fitting may also be disabled using style commands. This is useful for icons that shouldn't scale with text being fitted to a textbox. For example, an ornamental text divider specified in layout coordinates that shouldn't shrink even if the text content changes size.
 
@@ -310,12 +314,12 @@ Style inlines are used to change the apperance of text and inlined icons. Style 
 
 A style inline may contain one or more style options, but only one of each type of options. Option types are deduced by their format. Formats are:
 
-- *Number*: Any integer or decimal number, including negative numbers, i.e. -123.45.
-- *Hex*: A '\#' followed by any number of hexadecimal digits, i.e. #cf32c4.
-- *Percentage*: A \<Number\> appended with a '%', i.e. 55%.
-- *Size*: A \<Number\> appended with the letter 'p', i.e. 24p.
+- *Number*: Any integer or decimal number, including negative numbers, e.g. -123.45.
+- *Hex*: A '\#' followed by any number of hexadecimal digits, e.g. #cf32c4.
+- *Percentage*: A \<Number\> appended with a '%', e.g. 55%.
+- *Size*: A \<Number\> appended with the letter 'p', e.g. 24p.
 - *String*: Any string excluding whitespace and the special charactyer ':'.
-- *Pair*: Any \<String\> followed by immediate by a ':' and another value, without whitespace, i.e. foo:bar or baz:150%.
+- *Pair*: Any \<String\> followed by immediate by a ':' and another value, without whitespace, e.g. foo:bar or baz:150%.
 
 Basic 'unnamed' options are:
 
