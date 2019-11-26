@@ -28,7 +28,7 @@ You can sort and zoom the cards in web view mode. To prepare them for print, sel
 
 Cardmotron is free to use. Documents produced using Cardmotron are original works and remain the sole intellectual property of the end user. Using Cardmotron and the documents it produces lawfully is the sole responsibility of the end user.
 
-The Cardmotron source code is provided for informational purposes only. It remains the exclusive property of Cryptogogue, Inc. and is licensed to end users only for local hosting on client machines for individual use. No license to host any part of Cardmotron on a server or to produce a deriviative work based on Cardmotron's source code is granted or implied.
+The Cardmotron source code is provided for informational purposes only. It remains the exclusive property of Cryptogogue, Inc. and is licensed to end users only for local hosting on client machines for individual use. No license to publicly host or distribute Cardmotron in whole or in part in any fashion or to produce any deriviative work based on Cardmotron's source code is granted or implied.
 
 Modifications to Cardmotron's source code are considered derivative works. All such works are the property or Cryptogogue, Inc. and will continue to be licensed to their authors (and the public at large) in perpetuity under the original terms of this license.
 
