@@ -14,7 +14,9 @@ A schema contains "layouts" and "definitions." Each layout describes an SVG docu
 
 Most schemas will specify a layout for each type of card in the game. The definitions will contain the text, graphics and other data fields for each individual card. In other words, if your game has a card type called 'hero', then you will specify a single layout for 'hero' type cards and a unique definition for each individual hero in your game. 
 
-Cardmotron features a powerful text formatting engine that can be used to render styled text with multiple fonts and inlined icons. Cardmotron can also dynamically align and resize text to fit inside a text box. This is key functionality, as manually formatting text using professional design tools can be time consuming and, surprisingly, dynamically fitting text to a constrained space is not widely supported by either HTML/CSS or SVG.
+Cardmotron features a powerful text formatting engine that can be used to render styled text with multiple fonts and inlined icons. Cardmotron can also dynamically align and resize text to fit inside a text box. This is key functionality, as manually formatting text using professional design tools can be time consuming and, surprisingly, dynamically fitting text to a constrained space is not widely supported by either HTML/CSS\* or SVG.
+
+(\*Or possibly not, as pointed out [here](https://boardgamegeek.com/article/33468961).)
 
 ### Try it Out
 
@@ -31,6 +33,8 @@ Cardmotron is free to use. Documents produced using Cardmotron are original work
 The Cardmotron source code is provided for informational purposes only. It remains the exclusive property of Cryptogogue, Inc. and is licensed to end users only for local hosting on client machines for individual use.
 
 Modifications to Cardmotron's source code are considered derivative works and remain the property or Cryptogogue, Inc., licensed to their authors under the terms of this license.
+
+Note: We may re-release Cardmotron later with a more permissive license. In the meantime, if you want to work with the source and this license doesn't meet your needs, write to us at 'cardmotron' at cryptogogue.com and let us know what you have in mind. 
 
 ### Contributing
 
