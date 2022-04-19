@@ -1,6 +1,6 @@
 # Cardmotron
 
-Cardmotron is a free tool for laying out trading card games for print. You can use it to quickly produce high-quality cardsheets for a variety of media sizes.
+[Cardmotron](https://www.cardmotron.com) is a free tool for laying out trading card games for print. You can use it to quickly produce high-quality cardsheets for a variety of media sizes.
 
 Cardmotron is great for prototyping your game or for preparing it for print-and-play distribution.
 
